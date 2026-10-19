@@ -1,7 +1,13 @@
 const ErrorHandler = (error, req, res, next) => {
-    res.status(500).json({
-        message: error.message
+    const statusCode = error.statusCode || 500
+    const messsage = error.message || 'Error interno del servidor'
+
+    res.status(statusCode).json({
+        status: 'error',
+        message: messsage
     })
+
+    next()
 }
 
 export { ErrorHandler }
