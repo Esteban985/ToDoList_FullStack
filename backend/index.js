@@ -5,9 +5,11 @@ import { ErrorHandler } from './middlewares/ErrorHandler.js';
 import { jwtVerificador } from './middlewares/jwtVerificador.js';
 import { TaskRoute } from './routes/TasksRouter.js';
 import { TiposTareasRoute } from './routes/TiposTareas.js';
+import cors from 'cors'
 
 const app = express();
 
+app.use(cors())
 app.use(express.json())
 
 app.use('/api/user', LoginRoute)
